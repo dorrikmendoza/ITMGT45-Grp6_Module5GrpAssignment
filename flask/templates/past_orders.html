@@ -1,0 +1,14 @@
+{% include "header.html" %}
+<h1>Your Past Orders</h1>
+{% if orders %}
+    <ul>
+        {% for order in orders %}
+            <li>
+                Order ID: {{ order.order_id }}, Date: {{ order.date }}, Total: {{ order.total }}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No orders have been made yet.</p>
+{% endif %}
+{% include "footer.html" %}
