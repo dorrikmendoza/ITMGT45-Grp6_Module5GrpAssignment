@@ -3,8 +3,6 @@ from flask import render_template
 from flask import request
 from flask import session
 from flask import flash
-from bson.json_util import loads, dumps
-from flask import make_response
 import database as db
 import authentication
 import logging
@@ -18,13 +16,6 @@ app.secret_key = b's@g@d@c0ff33!'
 
 logging.basicConfig(level=logging.DEBUG)
 app.logger.setLevel(logging.INFO)
-
-@app.route('/api/products/<int:code>',methods=['GET'])
-def api_get_product(code):
-    resp = make_response(dumps(db.get_product(code)))
-    resp.mimetype = 'application/json'
-    return resp
-
 
 @app.route('/past_orders')
 def past_orders():
